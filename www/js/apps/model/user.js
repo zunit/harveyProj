@@ -55,10 +55,17 @@ define (["yasmf"], function(_y)){
 	self.setEmail = function(email){
 		self._email = email;
 		notify("emailChanged");
-	}
+	};
 	self.getEmail = function(){
 		return self._email;
-	}
+	};
+	Object.defineProperty(self, "email", {
+		get: self.getEmail,
+		set: self.setEmail,
+		configurable: true
+	});
+
+	
 
 	// property that returns ID of list of question 
 	self._questionCollection = undefined;
